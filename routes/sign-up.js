@@ -4,7 +4,7 @@ let models = require('../models')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Ei Corps' });
+  res.render('sign-up', { title: 'Ei Corps' });
 });
 
 router.post('/new', function(req, res){

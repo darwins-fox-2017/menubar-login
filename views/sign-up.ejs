@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ei Corps</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>SIGN UP</p>
+    <div class="row">
+      <form action="/sign-up/create" method="post">
+        <label >Username</label><br>
+        <input type="text" name="username" autocomplete="off" placeholder="example : jason@email.com"><br>
+        <label >Password</label><br>
+        <input type="password" name="password"><br>
+        <label >Roles</label><br>
+        <select class="" name="roles">
+          <option value="not input"></option>
+          <option value="admin">Admin</option>
+          <option value="customer">Customer</option>
+          <option value="supervior">Supervisor</option>
+          <option value="user">User</option>
+        </select><br><br>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </body>
+</html>
