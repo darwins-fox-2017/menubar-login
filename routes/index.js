@@ -1,27 +1,58 @@
 var express = require('express');
 var router = express.Router();
 
+let db = require('../models')
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+    res.render('index', {
+        title: 'Express'
+    });
 });
 
-router.get('/register', function(req, res, next){
-  res.render('auth/register')
+router.get('/register', function(req, res, next) {
+    if (req.session.username) {
+        res.render('dashboard/index', {
+            currentUser: []
+        })
+    } else {
+        res.render('auth/register')
+    }
 })
 
-router.get('/login', function(req, res, next){
-  res.render('auth/login')
+router.get('/login', function(req, res, next) {
+    if (req.session.username) {
+        res.render('dashboard/index', {
+            currentUser: []
+        })
+    } else {
+        res.render('auth/login')
+    }
 })
 
+router.get('/logout', function(req, res, next) {
+    req.session.destroy(function(err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/');
+        }
+    })
+})
 
-var sess;
-
-router.get('/dashboard', function(req, res, next){
-  sess = req.session;
-  sess.email; 
-  sess.username;
-  res.render('dashboard/index')
+router.get('/dashboard', function(req, res, next) {
+    console.log(req.session.username);
+    if (req.session.username) {
+        console.log('iiiidddd', req.session.id);
+        db.User.find({
+            id: req.session.id
+        }).then((user) => {
+            res.render('dashboard/index', {
+                currentUser: user
+            })
+        })
+    } else {
+        res.redirect('/login')
+    }
 })
 
 module.exports = router;

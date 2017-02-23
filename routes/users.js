@@ -26,7 +26,11 @@ router.post('/create', function(req, res, next){
      password: hash,
      salt: secret,
      role: 'client'
-   }).then(() => {
+   }).then((user) => {
+     console.log('------------', user.id);
+     req.session.username = req.body.username
+     req.session.id = user.id
+
      res.redirect('/dashboard')
    })
 })
@@ -41,6 +45,9 @@ router.post('/login', function(req, res, next){
                        .update(req.body.password)
                        .digest('hex');
     if (user.password == hash) {
+      req.session.username = user.username
+      req.session.id = user.id
+      
       console.log('Authentication success');
       res.redirect('/dashboard')
     } else{
