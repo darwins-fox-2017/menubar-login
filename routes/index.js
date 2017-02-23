@@ -11,19 +11,17 @@ router.get('/', function(req, res, next) {
 
 router.get('/register', function(req, res, next) {
     if (req.session.username) {
-        res.render('dashboard/index', {
-            currentUser: []
-        })
+      res.redirect('/dashboard')
+
     } else {
-        res.render('auth/register')
+      res.render('auth/register')
     }
 })
 
 router.get('/login', function(req, res, next) {
     if (req.session.username) {
-        res.render('dashboard/index', {
-            currentUser: []
-        })
+
+        res.redirect('/dashboard')
     } else {
         res.render('auth/login')
     }
