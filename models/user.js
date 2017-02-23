@@ -1,4 +1,6 @@
 'use strict';
+const crypto = require('crypto')
+
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
     username: DataTypes.STRING,
@@ -26,6 +28,23 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+      }
+    },
+    hooks:{
+      beforeCreate:function(value, option){
+        let unique = "ASBCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsstuvwxyz0123456789"
+        let salt = ''
+
+        for (let i = 0; i < 9; i++) {
+          salt += unique[Math.floor(Math.random() * unique.length)]
+        }
+
+        const hash = crypto.createHmac('sha256', salt)
+                           .update(value.password)
+                           .digest('hex')
+
+        value.password = hash
+
       }
     }
   });
