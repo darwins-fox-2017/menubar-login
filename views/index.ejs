@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Ei Corps</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>LOGIN</p>
+    <div class="row">
+      <form action="/new" method="post">
+        <label >Username</label><br>
+        <input type="text" name="username" autocomplete="off"><br>
+        <label >password</label><br>
+        <input type="password" name="password"><br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   </body>
 </html>
