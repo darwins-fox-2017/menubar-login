@@ -13,6 +13,8 @@ var app = express();
 app.use(cookieParser('sssshhhh'));
 app.use(session({secret: 'sssshhhh'}))
 
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
