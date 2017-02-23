@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "isumizumi",
+    "password": "1234",
+    "database": "menu_login",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}
