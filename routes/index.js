@@ -14,4 +14,14 @@ router.get('/login', function(req, res, next){
   res.render('auth/login')
 })
 
+
+var sess;
+
+router.get('/dashboard', function(req, res, next){
+  sess = req.session;
+  sess.email; 
+  sess.username;
+  res.render('dashboard/index')
+})
+
 module.exports = router;
