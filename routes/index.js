@@ -40,15 +40,10 @@ router.get('/logout', function(req, res, next) {
 })
 
 router.get('/dashboard', function(req, res, next) {
-    console.log(req.session.username);
     if (req.session.username) {
-        console.log('iiiidddd', req.session.id);
-        db.User.find({
-            id: req.session.id
-        }).then((user) => {
-            res.render('dashboard/index', {
-                currentUser: user
-            })
+        res.render('dashboard/index', {
+            username: req.session.username,
+            role: req.session.role
         })
     } else {
         res.redirect('/login')

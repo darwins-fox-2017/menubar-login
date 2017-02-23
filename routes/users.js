@@ -6,8 +6,6 @@ let db = require('../models')
 const crypto = require('crypto');
 const shortid = require('shortid');
 
-
-
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
@@ -30,6 +28,8 @@ router.post('/create', function(req, res, next){
      console.log('------------', user.id);
      req.session.username = req.body.username
      req.session.id = user.id
+     req.session.email = user.email
+     req.session.role = user.role
 
      res.redirect('/dashboard')
    })
@@ -47,7 +47,9 @@ router.post('/login', function(req, res, next){
     if (user.password == hash) {
       req.session.username = user.username
       req.session.id = user.id
-      
+      req.session.email = user.email
+      req.session.role = user.role
+
       console.log('Authentication success');
       res.redirect('/dashboard')
     } else{
