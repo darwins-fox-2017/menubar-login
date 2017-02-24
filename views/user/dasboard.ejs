@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>dasboard</title>
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>selamat datang <%=username %></h1>
+    <h3>ini adalah menu yang ada untuk user anda</h3>
+  <% menu.forEach(function(menu){  %>
+    <a href="<%=menu.link%>" class="LinkButton"><%=menu.name%></a>
+
+  <% })%>
+
+
+  </body>
+</html>
