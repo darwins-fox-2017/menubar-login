@@ -29,6 +29,9 @@ router.get('/login', function(req, res, next) {
 
 router.get('/logout', function(req, res, next) {
     req.session.destroy(function(err) {
+      req.session = null;
+      res.clearCookie('connect.sid');
+      res.clearCookie('session');
         if (err) {
             console.log(err);
         } else {
