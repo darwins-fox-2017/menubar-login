@@ -23,7 +23,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     password: DataTypes.STRING,
-    role: DataTypes.STRING
+    role: DataTypes.STRING,
+    salt:DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
@@ -35,11 +36,13 @@ module.exports = function(sequelize, DataTypes) {
         let unique = "ASBCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrsstuvwxyz0123456789"
         let salt = ''
 
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 5; i++) {
           salt += unique[Math.floor(Math.random() * unique.length)]
         }
 
-        const hash = crypto.createHmac('sha256', salt)
+        value.salt = salt
+
+        const hash = crypto.createHmac('sha512', salt)
                            .update(value.password)
                            .digest('hex')
 

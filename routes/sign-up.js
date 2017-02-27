@@ -7,9 +7,14 @@ router.get('/', function(req, res, next) {
   res.render('sign-up', { title: 'Ei Corps' });
 });
 
-router.post('/new', function(req, res){
-  models.User.create(req.body).then(function(users){
-    res.render('/users/user')
+router.post('/create', function(req, res){
+  models.User.create({
+    username:req.body.username,
+    email:req.body.email,
+    password:req.body.password,
+    role:req.body.roles
+  }).then(function(users){
+    res.redirect('/')
   })
 })
 

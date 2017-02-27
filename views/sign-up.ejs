@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ei Corps</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>SIGN UP</p>
-    <div class="row">
-      <form action="/sign-up/create" method="post">
-        <label >Username</label><br>
-        <input type="text" name="username" autocomplete="off" placeholder="example : jason@email.com"><br>
-        <label >Password</label><br>
-        <input type="password" name="password"><br>
-        <label >Roles</label><br>
-        <select class="" name="roles">
-          <option value="not input"></option>
-          <option value="admin">Admin</option>
-          <option value="customer">Customer</option>
-          <option value="supervior">Supervisor</option>
-          <option value="user">User</option>
-        </select><br><br>
-        <button type="submit">Sign Up</button>
-      </form>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+          <h1 class="text-center"><%= title %></h1>
+          <p class="text-center">Welcome to <%= title %></p>
+          <div class="account-wall">
+            <form action="/sign-up/create" method="post">
+              <label >Username</label><br>
+              <input type="text" class="form-control" name="username"><br>
+              <label >Email</label><br>
+              <input type="text" class="form-control" name="email" autocomplete="off" placeholder="example : jason@email.com"><br>
+              <label >Password</label><br>
+              <input type="password" class="form-control" name="password"><br>
+              <label >Roles</label><br>
+              <select class="form-control" name="roles">
+                <option value="not input"></option>
+                <option value="admin">Admin</option>
+                <option value="customer">Customer</option>
+                <option value="supervior">Supervisor</option>
+                <option value="user">User</option>
+              </select><br><br>
+              <button class ="btn btn-default" type="submit">Sign Up</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
